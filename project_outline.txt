@@ -8,9 +8,12 @@ An "Always available" list for, well, yeah. Like Lords or Dancers and such
 Adjustable amount of units being picked, if you want to be constrained or free
 Support for most or all games in the series
 A "Pick My Pairings" mode for games where that's relevant
+A "Pick My Classes" mode for games where that's relevant
 A "Point-based" selection mode, where characters are weighted based on availability and viability
 - The tool must then pick characters at random until the chosen point limit is reached
 -Point values are adjustable, if a player doesn't think a given unit is THAT broken or terrible
+A "Tier List-based" selection mode, where units are weighted based on their perceived quality for efficient play.
+-Tier placements can be adjusted through an "Advanced" tab, and amount of units taken from each tier can also be chosen
 
 
 This project may work better in Javascript than Django, so we might need to freshen up on that.
