@@ -37,29 +37,31 @@
     <h4>Select which units to ban:</h4>
     <h4>Select which units to ensure will be available:</h4>
 
-    <div id="random" style="display: none;">
-        <p>The Pure Random method is just that - random.
-        You will be assigned units based on the luck of the draw.
-        There is a distinct possibility your Lord will go solo for a while, so you've been warned.
-        </p>
-    </div>
+    <div id="picking-methods">
+      <div id="random" style="display: none;">
+          <p>The Pure Random method is just that - random.
+          You will be assigned units based on the luck of the draw.
+          There is a distinct possibility your Lord will go solo for a while, so you've been warned.
+          </p>
+      </div>
 
-    <div id="points" style="display: none;">
-        <p>The Point Based Method assigns each unit a value.
-        You will be assigned units until your total value is the selected amount.
-        If you would like to alter this value, or the assigned values of each unit, select the Advanced box below</p>
+      <div id="points" style="display: none;">
+          <p>The Point Based Method assigns each unit a value.
+          You will be assigned units until your total value is the selected amount.
+          If you would like to alter this value, or the assigned values of each unit, select the Advanced box below</p>
 
-        <input type="checkbox" class="advanced" id="pointsAdvanced">
-        <label for="pointsAdvanced">Advanced</label>
-    </div>
+          <input type="checkbox" class="advanced" id="pointsAdvanced">
+          <label for="pointsAdvanced">Advanced</label>
+      </div>
 
-    <div id="tiers" style="display: none;">
-        <p>The Tier List Based Method splits units into tiers based on their value for efficient play
-        You will be assigned a set amount of units from each tier.
-        If you would like to alter this amount, or adjusted the tier placements of the units, select the Advanced box below</p>
-        
-        <input type="checkbox" class="advanced" id="tierAdvanced">
-        <label for="tierAdvanced">Advanced</label>
+      <div id="tiers" style="display: none;">
+          <p>The Tier List Based Method splits units into tiers based on their value for efficient play
+          You will be assigned a set amount of units from each tier.
+          If you would like to alter this amount, or adjusted the tier placements of the units, select the Advanced box below</p>
+          
+          <input type="checkbox" class="advanced" id="tierAdvanced">
+          <label for="tierAdvanced">Advanced</label>
+      </div>
     </div>
 
     <script src="js_files/buttons.js"></script>
