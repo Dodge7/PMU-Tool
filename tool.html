@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title>PMU Tool</title>
 </head>
 <body>
@@ -32,7 +33,6 @@
             </div>
         </div>
     </div>
-
 
     <h4>Select which units to ban:</h4>
     <h4>Select which units to ensure will be available:</h4>
@@ -63,6 +63,11 @@
           <label for="tierAdvanced">Advanced</label>
       </div>
     </div>
+
+    <footer>
+      <input type="checkbox" class="light-mode-toggle" id="light-mode-toggle" onclick="lightMode()">
+      <label for="light-mode-toggle">Light Mode</label>
+    </footer>
 
     <script src="js_files/buttons.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
