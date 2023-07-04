@@ -18,3 +18,13 @@ function lightMode(){
     var element = document.body;
     element.classList.toggle("light-mode");
 }
+
+function gameSelect(){
+    //TODO: Allow changing between games
+    pass;
+}
+
+function advanced(){
+    //TODO: Add functionality to the Advanced options
+    pass;
+}
