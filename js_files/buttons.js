@@ -19,9 +19,8 @@ function lightMode(){
     element.classList.toggle("light-mode");
 }
 
-function gameSelect(){
-    //TODO: Allow changing between games
-    pass;
+function gameSelect(game){
+    sessionStorage.setItem('game', game)
 }
 
 function advanced(){
