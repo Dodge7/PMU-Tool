@@ -16,3 +16,8 @@ footer {
     background-color: whitesmoke;
     color: rgb(31, 29, 29);
 }
+
+#random-amount {
+    display: flex;
+    max-width: min-content;
+}
