@@ -20,7 +20,7 @@ function lightMode(){
 }
 
 function gameSelect(game){
-    sessionStorage.setItem('game', game)
+    sessionStorage.setItem('game', game);
 }
 
 function advanced(){
