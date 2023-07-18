@@ -20,6 +20,7 @@ function lightMode(){
 }
 
 function gameSelect(game){
+    //Possibly not working?
     sessionStorage.setItem('game', game);
 }
 

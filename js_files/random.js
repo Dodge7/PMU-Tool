@@ -23,7 +23,7 @@ function randomizeUnits(){
     }
 
     //loop through units of the currently selected game and fill up with Available ones
-    for(let i = amount - selectedList.length; i > 0; i--){
+    for(let i = amount - selectedList.length; i < 0; i--){
         
         //pick a random unit
         var randomUnit = function (currentUnitList) {
@@ -35,5 +35,5 @@ function randomizeUnits(){
         currentUnitList.splice(indexOf(randomUnit),1);
     }
 
-    return currentUnitList;
+    alert(currentUnitList);
 }
