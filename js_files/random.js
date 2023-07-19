@@ -3,9 +3,9 @@
 function randomizeUnits(){
 
     const gameList = {
-        'Birthright': 'birthrightUnits',
-        'Conquest': 'conquestUnits',
-        'Revelations': 'revelationsUnits',
+        'Birthright': birthrightUnits,
+        'Conquest': conquestUnits,
+        'Revelations': revelationsUnits,
     }
     let amount = parseInt(document.getElementById("random-amount").value);
     let currentUnitList = gameList[sessionStorage.getItem('game')];
@@ -13,27 +13,29 @@ function randomizeUnits(){
 
     //loop through the unit list and grab all the guaranteed ones, removing all the banned ones
     for(unit in currentUnitList){
-        if(unit["Availability"] == "Guaranteed"){
+        if(currentUnitList[unit]["Availability"] == "Guaranteed"){
             selectedList.push(unit);
-            currentUnitList.splice(indexOf(unit),1);
+            delete currentUnitList[unit];
         }
-        else if(unit["Availability"] == "Banned"){
-            currentUnitList.splice(indexOf(unit),1);
+        else if(currentUnitList[unit]["Availability"] == "Banned"){
+            delete currentUnitList[unit];
         }
     }
 
     //loop through units of the currently selected game and fill up with Available ones
-    for(let i = amount - selectedList.length; i < 0; i--){
+    for(let i = amount - selectedList.length; i > 0; i--){
         
         //pick a random unit
-        var randomUnit = function (currentUnitList) {
-            var keys = Object.keys(currentUnitList);
-            return currentUnitList[keys[ keys.length * Math.random() << 0]];
-        };
+        let keys = Object.keys(currentUnitList);
+        let randomUnit = keys[Math.floor(Math.random() * keys.length)];
+
         //add them to our list and remove from the array
         selectedList.push(randomUnit);
-        currentUnitList.splice(indexOf(randomUnit),1);
+        delete currentUnitList[randomUnit];
     }
 
-    alert(currentUnitList);
+    //TODO: Refresh unit list after randomization, to re-add units removed during the process
+    //gameSelect(sessionStorage.getItem('game'));
+
+    alert(selectedList);
 }
