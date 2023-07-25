@@ -8,7 +8,7 @@ function randomizeUnits(){
         'Revelations': revelationsUnits,
     }
     let amount = parseInt(document.getElementById("random-amount").value);
-    let currentUnitList = gameList[sessionStorage.getItem('game')];
+    let currentUnitList = JSON.parse(JSON.stringify(gameList[sessionStorage.getItem('game')]));
     let selectedList = [];
 
     //loop through the unit list and grab all the guaranteed ones, removing all the banned ones
@@ -33,9 +33,6 @@ function randomizeUnits(){
         selectedList.push(randomUnit);
         delete currentUnitList[randomUnit];
     }
-
-    //TODO: Refresh unit list after randomization, to re-add units removed during the process
-    //gameSelect(sessionStorage.getItem('game'));
 
     alert(selectedList);
 }
