@@ -21,6 +21,8 @@ function lightMode(){
 
 function gameSelect(game){
     sessionStorage.setItem('game', game);
+    document.getElementById("game-display").style.display = "block";
+    document.getElementById("currentGame").innerText = sessionStorage.getItem('game');
 }
 
 function advanced(){
