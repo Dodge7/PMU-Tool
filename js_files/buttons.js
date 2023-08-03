@@ -1,4 +1,3 @@
-
 function toggleVisibility(id){
     let section = document.getElementById(id);
     //Take all other sections you want to hide
@@ -29,3 +28,6 @@ function advanced(){
     //TODO: Add functionality to the Advanced options
     pass;
 }
+
+
+document.getElementById("light-mode-toggle").addEventListener("click", lightMode);
