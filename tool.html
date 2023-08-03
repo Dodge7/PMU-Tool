@@ -12,28 +12,26 @@
     <div id="settings">
         <h2>Select your game:</h2>
         <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-              Game Options
-            </button>
-            <div class="dropdown-menu dropdown-menu">
-              <button class="dropdown-item" type="button" id="select-birthright" onclick="gameSelect('Birthright')">Fates: Birthright</button>
-              <button class="dropdown-item" type="button" id="select-conquest" onclick="gameSelect('Conquest')">Fates: Conquest</button>
-              <button class="dropdown-item" type="button" id="select-revelations" onclick="gameSelect('Revelations')">Fates: Revelations</button>
-            </div>
+            <select id="game-selection">
+              <option class="Default" value="">Select Your Game</option>
+              <option class="Birthright" value="Birthright">Fates: Birthright</button>
+              <option class="Conquest" value="Conquest">Fates: Conquest</button>
+              <option class="Revelations" value="Revelations">Fates: Revelations</button>
+            </select>
         </div>
         <div id="game-display" style="display: none;">
           <div id="currentGame"></div>
         </div>
-        <h2>Select the method of team building:</h2>
-        <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-              Selection Method
-            </button>
-            <div class="dropdown-menu dropdown-menu">
-              <button class="dropdown-item" type="button" id="select-random" onclick="toggleVisibility('random')">Pure Random</button>
-              <button class="dropdown-item" type="button" id="select-point" onclick="toggleVisibility('points')">Point Based</button>
-              <button class="dropdown-item" type="button" id="select-tier" onclick="toggleVisibility('tiers')">Tier List</button>
-            </div>
+        <br>
+        <br>
+        <br>
+        <di class="btn-group">
+            <select id="picking-method">
+              <option class="Default" value="">Select the method of team building</option>
+              <option class="random" value="random">Pure Random</button>
+              <option class="points" value="points">Point Based</button>
+              <option class="tiers" value="tiers">Tier List</button>
+              </select>
         </div>
     </div>
 

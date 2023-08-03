@@ -31,3 +31,11 @@ function advanced(){
 
 
 document.getElementById("light-mode-toggle").addEventListener("click", lightMode);
+
+//for(button in document.getElementsByClassName("dropdown-game-option")){
+//    button.addEventListener("click", function(){ gameSelect(id) })
+//}
+
+document.getElementById("game-selection").addEventListener("change", (game) => { gameSelect(game.target.value) })
+
+document.getElementById("picking-method").addEventListener("change", (method) => { toggleVisibility(method.target.value) })
