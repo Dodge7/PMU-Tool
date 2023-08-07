@@ -99,7 +99,6 @@ const revelationsUnits = {
     'Kaze': {'Points': 0, 'Tier': 'F', 'Availability': 'Available'},
     'Silas': {'Points': 0, 'Tier': 'F', 'Availability': 'Available'},
     'Shura': {'Points': 0, 'Tier': 'F', 'Availability': 'Available'},
-    'Izana': {'Points': 0, 'Tier': 'F', 'Availability': 'Available'},
     'Mozu': {'Points': 0, 'Tier': 'F', 'Availability': 'Available'},
     'Rinkah': {'Points': 0, 'Tier': 'F', 'Availability': 'Available'},
     'Sakura': {'Points': 0, 'Tier': 'F', 'Availability': 'Available'},
