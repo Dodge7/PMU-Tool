@@ -35,8 +35,6 @@
         </div>
     </div>
 
-    <h4>Select which units to ban:</h4>
-    <h4>Select which units to ensure will be available:</h4>
     <label for="random-amount">How many units would you like to use?</label>
     <input type="number" id="random-amount" name="random-amount" min="1" max="99" value="15">
 
@@ -46,26 +44,31 @@
           You will be assigned units based on the luck of the draw.
           There is a distinct possibility your Lord will go solo for a while, so you've been warned.
           </p>
-          <input type="button" id="randomize" name="randomize" value="Randomize!" onclick="randomizeUnits()">
+          <input type="button" id="randomize" name="randomize" value="Randomize!" onclick="randomizeUnits()">         
       </div>
 
       <div id="points" style="display: none;">
           <p>The Point Based Method assigns each unit a value.
           You will be assigned units until your total value is the selected amount.
           If you would like to alter this value, or the assigned values of each unit, select the Advanced box below</p>
-
-          <input type="checkbox" class="advanced" id="pointsAdvanced">
-          <label for="pointsAdvanced">Advanced</label>
       </div>
 
       <div id="tiers" style="display: none;">
           <p>The Tier List Based Method splits units into tiers based on their value for efficient play
           You will be assigned a set amount of units from each tier.
           If you would like to alter this amount, or adjusted the tier placements of the units, select the Advanced box below</p>
-          
-          <input type="checkbox" class="advanced" id="tierAdvanced">
-          <label for="tierAdvanced">Advanced</label>
       </div>
+    </div>
+
+    <div>
+      <input type="checkbox" class="advanced" id="advanced">
+      <label for="advanced">Advanced</label>
+    </div>
+    
+    <div id="advanced-tab" style="display: none;">
+        <!--TODO: Make this section check for current picking method, to display their different settings-->
+        <p>Select which units to ban:</p>
+        <p>Select which units to ensure will be available:</p>
     </div>
 
     <footer>

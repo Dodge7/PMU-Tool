@@ -1,4 +1,4 @@
-function toggleVisibility(id){
+function togglePickingMethodVisibility(id){
     let section = document.getElementById(id);
     //Take all other sections you want to hide
     let others = document.getElementById('picking-methods').getElementsByTagName('div');
@@ -24,18 +24,21 @@ function gameSelect(game){
     document.getElementById("currentGame").innerText = sessionStorage.getItem('game');
 }
 
-function advanced(){
-    //TODO: Add functionality to the Advanced options
-    pass;
+function displayAdvanced(){
+    //document.getElementById().style.display = "block";
+    
+    if (document.getElementById("advanced-tab").style.display == "none"){
+        document.getElementById("advanced-tab").style.display = "block";
+    } else {
+        document.getElementById("advanced-tab").style.display = "none";
+    }
 }
 
 
 document.getElementById("light-mode-toggle").addEventListener("click", lightMode);
 
-//for(button in document.getElementsByClassName("dropdown-game-option")){
-//    button.addEventListener("click", function(){ gameSelect(id) })
-//}
+document.getElementById("game-selection").addEventListener("change", (game) => { gameSelect(game.target.value) });
 
-document.getElementById("game-selection").addEventListener("change", (game) => { gameSelect(game.target.value) })
+document.getElementById("picking-method").addEventListener("change", (method) => { togglePickingMethodVisibility(method.target.value) });
 
-document.getElementById("picking-method").addEventListener("change", (method) => { toggleVisibility(method.target.value) })
+document.getElementById("advanced").addEventListener("click", displayAdvanced);
