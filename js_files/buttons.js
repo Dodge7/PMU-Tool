@@ -1,4 +1,4 @@
-function togglePickingMethodVisibility(id){
+function togglePickingMethod(id){
     let section = document.getElementById(id);
     //Take all other sections you want to hide
     let others = document.getElementById('picking-methods').getElementsByTagName('div');
@@ -11,6 +11,7 @@ function togglePickingMethodVisibility(id){
             current.style.display = "none";
         }
     }
+    sessionStorage.setItem('method', id);
 }
 
 function lightMode(){
@@ -25,8 +26,6 @@ function gameSelect(game){
 }
 
 function displayAdvanced(){
-    //document.getElementById().style.display = "block";
-    
     if (document.getElementById("advanced-tab").style.display == "none"){
         document.getElementById("advanced-tab").style.display = "block";
     } else {
@@ -39,6 +38,6 @@ document.getElementById("light-mode-toggle").addEventListener("click", lightMode
 
 document.getElementById("game-selection").addEventListener("change", (game) => { gameSelect(game.target.value) });
 
-document.getElementById("picking-method").addEventListener("change", (method) => { togglePickingMethodVisibility(method.target.value) });
+document.getElementById("picking-method").addEventListener("change", (method) => { togglePickingMethod(method.target.value) });
 
 document.getElementById("advanced").addEventListener("click", displayAdvanced);
