@@ -11,6 +11,7 @@ function togglePickingMethod(id){
             current.style.display = "none";
         }
     }
+    //Set current picking method for future use
     sessionStorage.setItem('method', id);
 }
 
@@ -26,10 +27,11 @@ function gameSelect(game){
 }
 
 function displayAdvanced(){
-    if (document.getElementById("advanced-tab").style.display == "none"){
-        document.getElementById("advanced-tab").style.display = "block";
+    let target = "advanced-".concat("", sessionStorage.getItem('method'));
+    if (document.getElementById(target).style.display == "none"){
+        document.getElementById(target).style.display = "block";
     } else {
-        document.getElementById("advanced-tab").style.display = "none";
+        document.getElementById(target).style.display = "none";
     }
 }
 
