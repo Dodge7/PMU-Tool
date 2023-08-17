@@ -13,6 +13,8 @@ function togglePickingMethod(id){
     }
     //Set current picking method for future use
     sessionStorage.setItem('method', id);
+    
+    resetAdvancedTabs();
 }
 
 function lightMode(){
@@ -28,11 +30,22 @@ function gameSelect(game){
 
 function displayAdvanced(){
     let target = "advanced-".concat("", sessionStorage.getItem('method'));
+
     if (document.getElementById(target).style.display == "none"){
         document.getElementById(target).style.display = "block";
     } else {
         document.getElementById(target).style.display = "none";
     }
+}
+
+function resetAdvancedTabs(){
+    let advancedTabs = document.getElementById('advanced-tab').getElementsByTagName('div');
+    for (var i = 0; i < advancedTabs.length; i++){
+        let current = advancedTabs[i];
+        current.style.display = "none";
+    }
+    let advancedCheckbox = document.getElementById("advanced");
+    advancedCheckbox.checked = false;
 }
 
 
