@@ -67,10 +67,11 @@
     </div>
     
     <div id="advanced-tab">
-        <!--TODO: Make this section check for current picking method, to display their different settings-->
         <div id="advanced-random" style="display:none;">
-          <p>Select which units to ban:</p>
-          <p>Select which units to ensure will be available:</p>
+          <!--Replace the text below with a single list of all units in the current unit list where you toggle availability-->
+          <!--This will need to look at the current unit list and loop through it, creating a set of radio buttons-->
+          <!--For each unit, the radio buttons must default to the current Availability value-->
+          <input type="button" id="adjust-availability" name="adjust-availability" value="Adjust Unit Availability" onclick="advancedUnitList()">
         </div>
         <div id="advanced-points" style="display: none;">
           <p>Points Advanced Tab Goes Here</p>

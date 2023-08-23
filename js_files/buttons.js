@@ -48,6 +48,47 @@ function resetAdvancedTabs(){
     advancedCheckbox.checked = false;
 }
 
+function tweakRandomAvailability(selection){
+    //we'll have a series of radio buttons, a set of 3 for each unit, labelled Available, Guaranteed or Banned
+    //The options will default to whatever is set as default in the unit list
+    //Changing an option will change the value in the current unit list, so randomizations will follow the user's choice
+    pass; 
+}
+
+function advancedUnitList(){
+    //Loop through the current unit list, creating a set of radio buttons for each unit, with default selection at their
+    //proper default Availability
+    const gameList = {
+        'Birthright': birthrightUnits,
+        'Conquest': conquestUnits,
+        'Revelations': revelationsUnits,
+    }
+    let currentUnitList = JSON.parse(JSON.stringify(gameList[sessionStorage.getItem('game')]));
+    let container = document.getElementById("advanced-random");
+    let options = {"Available": false, "Guaranteed": false, "Banned": false};
+
+    for(unit in currentUnitList){
+        let unitWrapper = document.createElement('div');
+        let unitName = document.createElement("label");
+        unitName.innerText = unit;
+        unitWrapper.appendChild(unitName);
+        for(let key in options){
+            let label = document.createElement("label");
+            label.innerText = key;
+            let input = document.createElement("input");
+            input.type = "radio";
+            input.name = `${unit}Availability`;
+            label.appendChild(input);
+            unitWrapper.appendChild(label);
+        }
+        container.appendChild(unitWrapper);
+    }
+}
+//TODO: Fix styling of the unit list and make it default to their default availability
+
+
+//TODO: Hide all options until game is selected, then hide Advanced tab until picking method is selected
+
 
 document.getElementById("light-mode-toggle").addEventListener("click", lightMode);
 
