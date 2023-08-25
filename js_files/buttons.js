@@ -26,6 +26,7 @@ function gameSelect(game){
     sessionStorage.setItem('game', game);
     document.getElementById("game-display").style.display = "block";
     document.getElementById("currentGame").innerText = sessionStorage.getItem('game');
+    resetAdvancedTabs();
 }
 
 function displayAdvanced(){
@@ -46,6 +47,8 @@ function resetAdvancedTabs(){
     }
     let advancedCheckbox = document.getElementById("advanced");
     advancedCheckbox.checked = false;
+
+    clearAdvancedUnitList();
 }
 
 function tweakRandomAvailability(selection){
@@ -55,7 +58,7 @@ function tweakRandomAvailability(selection){
     pass; 
 }
 
-function advancedUnitList(){
+function advancedUnitAvailabilityList(){
     //Loop through the current unit list, creating a set of radio buttons for each unit, with default selection at their
     //proper default Availability
     const gameList = {
@@ -67,6 +70,12 @@ function advancedUnitList(){
     let container = document.getElementById("advanced-random");
     let options = {"Available": false, "Guaranteed": false, "Banned": false};
 
+    let unitAvailabilityList = document.createElement('div');
+    unitAvailabilityList.id = "availability-unit-list";
+
+    container.appendChild(unitAvailabilityList);
+
+    //Loop through units and make an element for each
     for(unit in currentUnitList){
         let unitWrapper = document.createElement('div');
         let unitName = document.createElement("label");
@@ -81,11 +90,17 @@ function advancedUnitList(){
             label.appendChild(input);
             unitWrapper.appendChild(label);
         }
-        container.appendChild(unitWrapper);
+        unitAvailabilityList.appendChild(unitWrapper);
     }
 }
-//TODO: Fix styling of the unit list and make it default to their default availability
 
+function clearAdvancedUnitList(){
+    let advancedUnitList = document.getElementById("availability-unit-list");
+    advancedUnitList.parentNode.removeChild("availability-unit-list");
+}
+
+
+//TODO: Fix styling of the unit list and make it default to their default availability
 
 //TODO: Hide all options until game is selected, then hide Advanced tab until picking method is selected
 
@@ -97,3 +112,5 @@ document.getElementById("game-selection").addEventListener("change", (game) => {
 document.getElementById("picking-method").addEventListener("change", (method) => { togglePickingMethod(method.target.value) });
 
 document.getElementById("advanced").addEventListener("click", displayAdvanced);
+
+document.getElementById("adjust-availability").addEventListener("click", advancedUnitAvailabilityList);
