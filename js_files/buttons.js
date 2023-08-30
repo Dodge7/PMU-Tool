@@ -1,4 +1,6 @@
 function togglePickingMethod(id){
+    document.getElementById("picking-method-options-wrapper").style.display = "block";
+
     let section = document.getElementById(id);
     //Take all other sections you want to hide
     let others = document.getElementById('picking-methods').getElementsByTagName('div');
@@ -13,7 +15,6 @@ function togglePickingMethod(id){
     }
     //Set current picking method for future use
     sessionStorage.setItem('method', id);
-    
     resetAdvancedTabs();
 }
 
@@ -25,6 +26,7 @@ function lightMode(){
 function gameSelect(game){
     sessionStorage.setItem('game', game);
     document.getElementById("game-display").style.display = "block";
+    document.getElementById("picking-method").style.display = "block";
     document.getElementById("currentGame").innerText = sessionStorage.getItem('game');
     resetAdvancedTabs();
 }
@@ -101,9 +103,6 @@ function clearAdvancedUnitList(){
 
 
 //TODO: Fix styling of the unit list and make it default to their default availability
-
-//TODO: Hide all options until game is selected, then hide Advanced tab until picking method is selected
-
 
 document.getElementById("light-mode-toggle").addEventListener("click", lightMode);
 
