@@ -82,13 +82,16 @@ function advancedUnitAvailabilityList(){
         let unitWrapper = document.createElement('div');
         let unitName = document.createElement("label");
         unitName.innerText = unit;
+        unitName.style.marginRight = '10px';
         unitWrapper.appendChild(unitName);
         for(let key in options){
             let label = document.createElement("label");
             label.innerText = key;
+            label.style.marginLeft = '10px';
             let input = document.createElement("input");
             input.type = "radio";
             input.name = `${unit}Availability`;
+            input.style.marginLeft = '10px';
             label.appendChild(input);
             unitWrapper.appendChild(label);
         }
@@ -102,7 +105,7 @@ function clearAdvancedUnitList(){
 }
 
 
-//TODO: Fix styling of the unit list and make it default to their default availability
+//TODO: Make unit list availability default to their default availability
 
 document.getElementById("light-mode-toggle").addEventListener("click", lightMode);
 
