@@ -15,7 +15,10 @@ function togglePickingMethod(id){
     }
     //Set current picking method for future use
     sessionStorage.setItem('method', id);
-    resetAdvancedTabs();
+
+    if(document.getElementById("availability-unit-list")){
+        resetAdvancedTabs();
+    }
 }
 
 function lightMode(){
@@ -28,7 +31,9 @@ function gameSelect(game){
     document.getElementById("game-display").style.display = "block";
     document.getElementById("picking-method").style.display = "block";
     document.getElementById("currentGame").innerText = sessionStorage.getItem('game');
-    resetAdvancedTabs();
+    if(document.getElementById("availability-unit-list")){
+        resetAdvancedTabs();
+    }
 }
 
 function displayAdvanced(){
@@ -53,11 +58,30 @@ function resetAdvancedTabs(){
     clearAdvancedUnitList();
 }
 
-function tweakRandomAvailability(selection){
-    //we'll have a series of radio buttons, a set of 3 for each unit, labelled Available, Guaranteed or Banned
-    //The options will default to whatever is set as default in the unit list
-    //Changing an option will change the value in the current unit list, so randomizations will follow the user's choice
-    pass; 
+function tweakRandomAvailability(){
+
+    //TODO: Make it actually work
+    const gameList = {
+        'Birthright': birthrightUnits,
+        'Conquest': conquestUnits,
+        'Revelations': revelationsUnits,
+    }
+    game = sessionStorage.getItem('game');
+
+    let currentUnitList = JSON.parse(JSON.stringify(gameList[game]));
+    
+    for(unit in currentUnitList){
+        let availability = currentUnitList[unit]["Availability"];
+        let options = document.getElementsByName(unit);
+
+        for(let i = 0; i < options.length; i++){
+            if(options[i].checked && options[i].value != availability){
+                gameList[game][unit]["Availability"] = options[i].value;
+            }
+        }
+    }
+
+    sessionStorage.setItem('game', game);
 }
 
 function advancedUnitAvailabilityList(){
@@ -77,6 +101,7 @@ function advancedUnitAvailabilityList(){
 
     container.appendChild(unitAvailabilityList);
 
+
     //Loop through units and make an element for each
     for(unit in currentUnitList){
         let unitWrapper = document.createElement('div');
@@ -91,6 +116,7 @@ function advancedUnitAvailabilityList(){
             let input = document.createElement("input");
             input.type = "radio";
             input.name = `${unit}Availability`;
+            input.value = key;
             input.style.marginLeft = '10px';
             //If key is the unit's default availability, set it as checked
             if(key === currentUnitList[unit]['Availability']){
@@ -119,3 +145,5 @@ document.getElementById("picking-method").addEventListener("change", (method) =>
 document.getElementById("advanced").addEventListener("click", displayAdvanced);
 
 document.getElementById("adjust-availability").addEventListener("click", advancedUnitAvailabilityList);
+
+document.getElementById("commit-button").addEventListener("click", tweakRandomAvailability);
