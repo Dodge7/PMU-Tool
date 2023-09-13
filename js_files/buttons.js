@@ -92,6 +92,11 @@ function advancedUnitAvailabilityList(){
             input.type = "radio";
             input.name = `${unit}Availability`;
             input.style.marginLeft = '10px';
+            //If key is the unit's default availability, set it as checked
+            if(key === currentUnitList[unit]['Availability']){
+                input.checked = true;
+            }
+
             label.appendChild(input);
             unitWrapper.appendChild(label);
         }
@@ -104,8 +109,6 @@ function clearAdvancedUnitList(){
     advancedUnitList.parentNode.removeChild("availability-unit-list");
 }
 
-
-//TODO: Make unit list availability default to their default availability
 
 document.getElementById("light-mode-toggle").addEventListener("click", lightMode);
 
