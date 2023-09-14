@@ -72,7 +72,7 @@ function tweakRandomAvailability(){
     
     for(unit in currentUnitList){
         let availability = currentUnitList[unit]["Availability"];
-        let options = document.getElementsByName(unit);
+        let options = document.getElementsByName(`${unit}Availability`);
 
         for(let i = 0; i < options.length; i++){
             if(options[i].checked && options[i].value != availability){
