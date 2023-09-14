@@ -60,7 +60,6 @@ function resetAdvancedTabs(){
 
 function tweakRandomAvailability(){
 
-    //TODO: Make it actually work
     const gameList = {
         'Birthright': birthrightUnits,
         'Conquest': conquestUnits,
@@ -92,6 +91,10 @@ function advancedUnitAvailabilityList(){
         'Conquest': conquestUnits,
         'Revelations': revelationsUnits,
     }
+    if(document.contains(document.getElementById("availability-unit-list"))){
+        return;
+    }
+
     let currentUnitList = JSON.parse(JSON.stringify(gameList[sessionStorage.getItem('game')]));
     let container = document.getElementById("advanced-random");
     let options = {"Available": false, "Guaranteed": false, "Banned": false};
@@ -132,7 +135,7 @@ function advancedUnitAvailabilityList(){
 
 function clearAdvancedUnitList(){
     let advancedUnitList = document.getElementById("availability-unit-list");
-    advancedUnitList.parentNode.removeChild("availability-unit-list");
+    advancedUnitList.parentNode.removeChild(advancedUnitList);
 }
 
 
