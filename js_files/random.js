@@ -1,5 +1,4 @@
 
-//add a Mode parameter to have different functionality for the different modes
 function randomizeUnits(){
 
     const gameList = {
@@ -35,4 +34,14 @@ function randomizeUnits(){
     }
 
     alert(selectedList);
+}
+
+function randomizeUnitsByPoints(){
+    //Will mostly be copied from the default randomize function, but with point value logic instead of availability
+    pass;
+}
+
+function randomizeUnitsByTier(){
+    //Again, will be similar to the above, but checking for tier lists
+    pass;
 }

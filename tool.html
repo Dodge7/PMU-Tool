@@ -37,11 +37,11 @@
     </div>
 
     <div id="picking-method-options-wrapper" style="display: none;">
-      <label for="random-amount">How many units would you like to use?</label>
-      <input type="number" id="random-amount" name="random-amount" min="1" max="99" value="15">
 
       <div id="picking-methods">
         <div id="random" style="display: none;">
+            <label for="random-amount">How many units would you like to use?</label>
+            <input type="number" id="random-amount" name="random-amount" min="1" max="99" value="15">
             <p>The Pure Random method is just that - random.
             You will be assigned units based on the luck of the draw.
             There is a distinct possibility your Lord will go solo for a while, so you've been warned.
@@ -50,15 +50,34 @@
         </div>
 
         <div id="points" style="display: none;">
+            <label for="points-amount">Choose the total value of the units you want to use</label>
+            <input type="number" id="points-amount" name="points-amount" min="1" max="255" value="25">
             <p>The Point Based Method assigns each unit a value.
             You will be assigned units until your total value is the selected amount.
-            If you would like to alter this value, or the assigned values of each unit, select the Advanced box below</p>
+            If you would like to alter the assigned values of each unit, select the Advanced box below</p>
+            <input type="button" id="randomize-points" name="randomize-points" value="Randomize!" onclick="randomizeUnitsByPoints()">  
         </div>
 
         <div id="tiers" style="display: none;">
-            <p>The Tier List Based Method splits units into tiers based on their value for efficient play
+            <label for="s-tier-amount">Number of S Tiers:</label>
+            <input type="number" id="s-tier-amount" name="s-tier-amount" min="0" max="99" value="0">
+            <br>
+            <label for="a-tier-amount">Number of A Tiers:</label>
+            <input type="number" id="a-tier-amount" name="a-tier-amount" min="0" max="99" value="2">
+            <br>
+            <label for="b-tier-amount">Number of B Tiers:</label>
+            <input type="number" id="b-tier-amount" name="b-tier-amount" min="0" max="99" value="3">
+            <br>
+            <label for="c-tier-amount">Number of C Tiers:</label>
+            <input type="number" id="c-tier-amount" name="c-tier-amount" min="0" max="99" value="4">
+            <br>
+            <label for="d-tier-amount">Number of D Tiers:</label>
+            <input type="number" id="d-tier-amount" name="d-tier-amount" min="0" max="99" value="5">
+            <br>
+            <p>The Tier List Based Method splits units into tiers based on their value for efficient play.
             You will be assigned a set amount of units from each tier.
-            If you would like to alter this amount, or adjusted the tier placements of the units, select the Advanced box below</p>
+            If you would like to alter the tier placements of the units, select the Advanced box below</p>
+            <input type="button" id="randomize-points" name="randomize-points" value="Randomize!" onclick="randomizeUnitsByTier()">  
         </div>
       </div>
       
