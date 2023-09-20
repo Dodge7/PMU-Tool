@@ -1,11 +1,11 @@
+const gameList = {
+    'Birthright': birthrightUnits,
+    'Conquest': conquestUnits,
+    'Revelations': revelationsUnits,
+}
 
 function randomizeUnits(){
 
-    const gameList = {
-        'Birthright': birthrightUnits,
-        'Conquest': conquestUnits,
-        'Revelations': revelationsUnits,
-    }
     let amount = parseInt(document.getElementById("random-amount").value);
     let currentUnitList = JSON.parse(JSON.stringify(gameList[sessionStorage.getItem('game')]));
     let selectedList = [];
@@ -38,7 +38,26 @@ function randomizeUnits(){
 
 function randomizeUnitsByPoints(){
     //Will mostly be copied from the default randomize function, but with point value logic instead of availability
-    pass;
+
+    let pointTotal = parseInt(document.getElementById("points-amount").value);
+    let currentUnitList = JSON.parse(JSON.stringify(gameList[sessionStorage.getItem('game')]));
+    let selectedList = [];
+
+    //Loop through the unit list
+    for(let i = Object.keys(currentUnitList).length; i > 0; i--){
+
+        //Take a random unit
+        let keys = Object.keys(currentUnitList);
+        let randomUnit = keys[Math.floor(Math.random() * keys.length)];
+
+        //Check point value, delete from Current List, and add to selected list
+        if(currentUnitList[randomUnit]["Points"] <= pointTotal){
+            selectedList.push(randomUnit);
+            pointTotal -= currentUnitList[randomUnit]["Points"];
+        }
+        delete currentUnitList[randomUnit];
+    }
+    alert(selectedList);
 }
 
 function randomizeUnitsByTier(){
