@@ -133,6 +133,24 @@ function advancedUnitAvailabilityList(){
     }
 }
 
+function tweakPointValues(){
+    pass;
+}
+
+function advancedUnitPointList(){
+    pass;
+}
+
+
+function tweakTierPlacements(){
+    pass;
+}
+
+function advancedUnitTierList(){
+    pass;
+}
+
+//TODO: Update this function to clear other advanced tabs as well
 function clearAdvancedUnitList(){
     let advancedUnitList = document.getElementById("availability-unit-list");
     advancedUnitList.parentNode.removeChild(advancedUnitList);
@@ -149,4 +167,12 @@ document.getElementById("advanced").addEventListener("click", displayAdvanced);
 
 document.getElementById("adjust-availability").addEventListener("click", advancedUnitAvailabilityList);
 
-document.getElementById("commit-button").addEventListener("click", tweakRandomAvailability);
+document.getElementById("adjust-points").addEventListener("click", advancedUnitPointList);
+
+document.getElementById("adjust-tiers").addEventListener("click", advancedUnitTierList);
+
+document.getElementById("availability-button").addEventListener("click", tweakRandomAvailability);
+
+document.getElementById("points-button").addEventListener("click", tweakPointValues);
+
+document.getElementById("tiers-button").addEventListener("click", tweakTierPlacements);
