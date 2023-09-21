@@ -37,7 +37,6 @@ function randomizeUnits(){
 }
 
 function randomizeUnitsByPoints(){
-    //Will mostly be copied from the default randomize function, but with point value logic instead of availability
 
     let pointTotal = parseInt(document.getElementById("points-amount").value);
     let currentUnitList = JSON.parse(JSON.stringify(gameList[sessionStorage.getItem('game')]));
@@ -61,6 +60,58 @@ function randomizeUnitsByPoints(){
 }
 
 function randomizeUnitsByTier(){
-    //Again, will be similar to the above, but checking for tier lists
-    pass;
+    let sTierAmount = parseInt(document.getElementById("s-tier-amount").value);
+    let aTierAmount = parseInt(document.getElementById("a-tier-amount").value);
+    let bTierAmount = parseInt(document.getElementById("b-tier-amount").value);
+    let cTierAmount = parseInt(document.getElementById("c-tier-amount").value);
+    let dTierAmount = parseInt(document.getElementById("d-tier-amount").value);
+
+    let currentUnitList = JSON.parse(JSON.stringify(gameList[sessionStorage.getItem('game')]));
+    let selectedList = [];
+    
+    //Loop through the unit list
+    for(let i = Object.keys(currentUnitList).length; i > 0; i--){
+
+        //Take a random unit
+        let keys = Object.keys(currentUnitList);
+        let randomUnit = keys[Math.floor(Math.random() * keys.length)];
+
+        switch(currentUnitList[randomUnit]["Tier"]){
+            case 'S':
+                if(sTierAmount > 0){
+                    selectedList.push(randomUnit);
+                    sTierAmount--;
+                }
+                break;
+            case 'A':
+                if(aTierAmount > 0){
+                    selectedList.push(randomUnit);
+                    aTierAmount--;
+                }
+                break;
+            case 'B':
+                if(bTierAmount > 0){
+                    selectedList.push(randomUnit);
+                    bTierAmount--;
+                }
+                break;
+            case 'C':
+                if(cTierAmount > 0){
+                    selectedList.push(randomUnit);
+                    cTierAmount--;
+                }
+                break;
+            case 'D':
+                if(dTierAmount > 0){
+                    selectedList.push(randomUnit);
+                    dTierAmount--;
+                }
+                break;
+            default:
+                selectedList.push(randomUnit);
+        }
+        delete currentUnitList[randomUnit];
+    }
+
+    alert(selectedList);
 }
