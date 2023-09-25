@@ -194,10 +194,17 @@ function advancedUnitTierList(){
     }
 }
 
-//TODO: Update this function to clear other advanced tabs as well
 function clearAdvancedUnitList(){
-    let advancedUnitList = document.getElementById("availability-unit-list");
+
+    let advancedUnitList = document.getElementById("tier-unit-list");
     advancedUnitList.parentNode.removeChild(advancedUnitList);
+
+    advancedUnitList = document.getElementById("availability-unit-list");
+    advancedUnitList.parentNode.removeChild(advancedUnitList);
+    
+    advancedUnitList = document.getElementById("point-unit-list");
+    advancedUnitList.parentNode.removeChild(advancedUnitList);
+
 }
 
 
