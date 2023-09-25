@@ -1,3 +1,4 @@
+
 function togglePickingMethod(id){
     document.getElementById("picking-method-options-wrapper").style.display = "block";
 
@@ -60,11 +61,6 @@ function resetAdvancedTabs(){
 
 function tweakRandomAvailability(){
 
-    const gameList = {
-        'Birthright': birthrightUnits,
-        'Conquest': conquestUnits,
-        'Revelations': revelationsUnits,
-    }
     game = sessionStorage.getItem('game');
 
     let currentUnitList = JSON.parse(JSON.stringify(gameList[game]));
@@ -86,11 +82,6 @@ function tweakRandomAvailability(){
 function advancedUnitAvailabilityList(){
     //Loop through the current unit list, creating a set of radio buttons for each unit, with default selection at their
     //proper default Availability
-    const gameList = {
-        'Birthright': birthrightUnits,
-        'Conquest': conquestUnits,
-        'Revelations': revelationsUnits,
-    }
     if(document.contains(document.getElementById("availability-unit-list"))){
         return;
     }
@@ -143,11 +134,64 @@ function advancedUnitPointList(){
 
 
 function tweakTierPlacements(){
-    pass;
+    game = sessionStorage.getItem('game');
+
+    let currentUnitList = JSON.parse(JSON.stringify(gameList[game]));
+    
+    for(unit in currentUnitList){
+        let tier = currentUnitList[unit]["Tier"];
+        let options = document.getElementsByName(`${unit}Tier`);
+
+        for(let i = 0; i < options.length; i++){
+            if(options[i].checked && options[i].value != tier){
+                gameList[game][unit]["Tier"] = options[i].value;
+            }
+        }
+    }
+
+    sessionStorage.setItem('game', game);
 }
 
 function advancedUnitTierList(){
-    pass;
+    if(document.contains(document.getElementById("tier-unit-list"))){
+        return;
+    }
+
+    let currentUnitList = JSON.parse(JSON.stringify(gameList[sessionStorage.getItem('game')]));
+    let container = document.getElementById("advanced-tiers");
+    let options = {"S": false, "A": false, "B": false, "C": false, "D": false, "F": false};
+
+    let unitTierList = document.createElement('div');
+    unitTierList.id = "tier-unit-list";
+
+    container.appendChild(unitTierList);
+
+    //Loop through units and make an element for each
+    for(unit in currentUnitList){
+        let unitWrapper = document.createElement('div');
+        let unitName = document.createElement("label");
+        unitName.innerText = unit;
+        unitName.style.marginRight = '10px';
+        unitWrapper.appendChild(unitName);
+        for(let key in options){
+            let label = document.createElement("label");
+            label.innerText = key;
+            label.style.marginLeft = '10px';
+            let input = document.createElement("input");
+            input.type = "radio";
+            input.name = `${unit}Tier`;
+            input.value = key;
+            input.style.marginLeft = '10px';
+            //If key is the unit's default tier, set it as checked
+            if(key === currentUnitList[unit]['Tier']){
+                input.checked = true;
+            }
+
+            label.appendChild(input);
+            unitWrapper.appendChild(label);
+        }
+        unitTierList.appendChild(unitWrapper);
+    }
 }
 
 //TODO: Update this function to clear other advanced tabs as well
