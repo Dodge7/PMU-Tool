@@ -16,10 +16,7 @@ function togglePickingMethod(id){
     }
     //Set current picking method for future use
     sessionStorage.setItem('method', id);
-
-    if(document.getElementById("availability-unit-list")){
-        resetAdvancedTabs();
-    }
+    resetAdvancedTabs();
 }
 
 function lightMode(){
@@ -32,9 +29,7 @@ function gameSelect(game){
     document.getElementById("game-display").style.display = "block";
     document.getElementById("picking-method").style.display = "block";
     document.getElementById("currentGame").innerText = sessionStorage.getItem('game');
-    if(document.getElementById("availability-unit-list")){
-        resetAdvancedTabs();
-    }
+    resetAdvancedTabs();
 }
 
 function displayAdvanced(){
@@ -175,9 +170,6 @@ function advancedUnitPointList(){
         input.value = currentUnitList[unit]['Points'];
         input.style.marginLeft = '10px';
 
-
-        console.log(input.value);
-
         label.appendChild(input);
         unitWrapper.appendChild(label);
         unitPointList.appendChild(unitWrapper);
@@ -248,23 +240,27 @@ function advancedUnitTierList(){
 
 function clearAdvancedUnitList(){
 
-    document.getElementById("advanced-random").removeChild(document.getElementById("availability-unit-list"));
-    document.getElementById("advanced-points").removeChild(document.getElementById("point-unit-list"));
-    document.getElementById("advanced-tiers").removeChild(document.getElementById("tier-unit-list"));
+
+    //document.getElementById("advanced-points").removeChild(document.getElementById("point-unit-list"));
+    //document.getElementById("advanced-tiers").removeChild(document.getElementById("tier-unit-list"));
+    //document.getElementById("advanced-random").removeChild(document.getElementById("availability-unit-list"));
 
 
-    //if(document.contains("availability-unit-list")){
-    //    let advancedUnitList = document.getElementById("availability-unit-list");
-    //    advancedUnitList.parentNode.removeChild(advancedUnitList);
-    //}
-    //else if(document.contains("point-unit-list")){
-    //    let advancedUnitList = document.getElementById("point-unit-list");
-    //    advancedUnitList.parentNode.removeChild(advancedUnitList);
-    //}
-    //else if(document.contains("tier-unit-list")){
-    //    let advancedUnitList = document.getElementById("tier-unit-list");
-    //    advancedUnitList.parentNode.removeChild(advancedUnitList);
-    //}
+    if(document.contains(document.getElementById("availability-unit-list"))){
+        document.getElementById("availability-unit-list").parentNode.removeChild(document.getElementById("availability-unit-list"));
+        console.log("Random tab removed");
+        console.log(document.contains(document.getElementById("point-unit-list")));
+    }
+    
+    if(document.contains(document.getElementById("point-unit-list"))){
+        document.getElementById("point-unit-list").parentNode.removeChild(document.getElementById("point-unit-list"));
+        console.log("Point tab removed");
+    }
+    
+    if(document.contains(document.getElementById("tier-unit-list"))){
+        document.getElementById("tier-unit-list").parentNode.removeChild(document.getElementById("tier-unit-list"));
+        console.log("Tier tab removed");
+    }
 
 
 }
