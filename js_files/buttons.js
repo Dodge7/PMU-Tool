@@ -125,11 +125,63 @@ function advancedUnitAvailabilityList(){
 }
 
 function tweakPointValues(){
-    pass;
+    game = sessionStorage.getItem('game');
+
+    let currentUnitList = JSON.parse(JSON.stringify(gameList[game]));
+    
+    for(unit in currentUnitList){
+        let pointValue = currentUnitList[unit]["Points"];
+        let changedValue = document.getElementById(`${unit}Point`).value;
+
+        if(changedValue != pointValue){
+            gameList[game][unit]["Points"] = changedValue;
+        }
+    }
+
+    sessionStorage.setItem('game', game);
 }
 
 function advancedUnitPointList(){
-    pass;
+    if(document.contains(document.getElementById("point-unit-list"))){
+        return;
+    }
+
+    let currentUnitList = JSON.parse(JSON.stringify(gameList[sessionStorage.getItem('game')]));
+    let container = document.getElementById("advanced-points");
+
+    let unitPointList = document.createElement('div');
+    unitPointList.id = "point-unit-list";
+
+    container.appendChild(unitPointList);
+
+    //Loop through units and make an element for each
+    for(unit in currentUnitList){
+        let unitWrapper = document.createElement('div');
+        let unitName = document.createElement("label");
+        unitName.innerText = unit;
+        unitName.style.marginRight = '10px';
+        unitWrapper.appendChild(unitName);
+
+        let label = document.createElement("label");
+        label.innerText = "Value:";
+        label.style.marginLeft = '10px';
+
+        let input = document.createElement("input");
+        input.type = "number";
+        input.inputMode = "numeric";
+        input.id = `${unit}Point`;
+        input.min = 0;
+        input.max = 99;
+        input.value = currentUnitList[unit]['Points'];
+        input.style.marginLeft = '10px';
+
+
+        console.log(input.value);
+
+        label.appendChild(input);
+        unitWrapper.appendChild(label);
+        unitPointList.appendChild(unitWrapper);
+    }
 }
 
 
@@ -196,16 +248,27 @@ function advancedUnitTierList(){
 
 function clearAdvancedUnitList(){
 
-    let advancedUnitList = document.getElementById("tier-unit-list");
-    advancedUnitList.parentNode.removeChild(advancedUnitList);
+    document.getElementById("advanced-random").removeChild(document.getElementById("availability-unit-list"));
+    document.getElementById("advanced-points").removeChild(document.getElementById("point-unit-list"));
+    document.getElementById("advanced-tiers").removeChild(document.getElementById("tier-unit-list"));
 
-    advancedUnitList = document.getElementById("availability-unit-list");
-    advancedUnitList.parentNode.removeChild(advancedUnitList);
-    
-    advancedUnitList = document.getElementById("point-unit-list");
-    advancedUnitList.parentNode.removeChild(advancedUnitList);
+
+    //if(document.contains("availability-unit-list")){
+    //    let advancedUnitList = document.getElementById("availability-unit-list");
+    //    advancedUnitList.parentNode.removeChild(advancedUnitList);
+    //}
+    //else if(document.contains("point-unit-list")){
+    //    let advancedUnitList = document.getElementById("point-unit-list");
+    //    advancedUnitList.parentNode.removeChild(advancedUnitList);
+    //}
+    //else if(document.contains("tier-unit-list")){
+    //    let advancedUnitList = document.getElementById("tier-unit-list");
+    //    advancedUnitList.parentNode.removeChild(advancedUnitList);
+    //}
+
 
 }
+
 
 
 document.getElementById("light-mode-toggle").addEventListener("click", lightMode);
